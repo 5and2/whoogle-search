@@ -14,7 +14,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
-      - "--certificatesresolvers.myresolver.acme.email=change@domain.name"
+      - "--certificatesresolvers.myresolver.acme.email=${email}"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - "443:443"
@@ -26,7 +26,7 @@ services:
   whoogle-search:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`change.host.name`)"
+      - "traefik.http.routers.whoami.rule=Host(`${host}`)"
       - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.tls.certresolver=myresolver"
       - "traefik.http.services.whoogle-search.loadbalancer.server.port=5000"
