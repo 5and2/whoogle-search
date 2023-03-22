@@ -77,4 +77,4 @@ services:
       # env_file: # Alternatively, load variables from whoogle.env
       #- whoogle.env
     ports:
-      - 8000:5000
+      - 8001:5000
